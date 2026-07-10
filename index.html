@@ -4,11 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZAIDEN</title>
+
 <link rel="icon" type="image/x-icon" href="favicon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 <style>
 *{
     margin:0;
@@ -35,7 +40,27 @@ h1{
     font-weight:700;
     letter-spacing:8px;
     margin-bottom:48px;
-}/
+}
+
+#secretA{
+    cursor:pointer;
+    user-select:none;
+}
+
+#secretImage{
+    opacity:0;
+    visibility:hidden;
+    display:block;
+    width:90%;
+    max-width:400px;
+    margin:40px auto 0;
+    transition:opacity .4s ease;
+}
+
+#secretImage.show{
+    opacity:1;
+    visibility:visible;
+}
 
 nav{
     display:flex;
@@ -47,7 +72,7 @@ nav a{
     color:#fff;
     font-size:30px;
     text-decoration:none;
-    transition:color .15s ease, transform .15s ease;
+    transition:color .15s ease,transform .15s ease;
 }
 
 nav a:hover{
@@ -56,15 +81,41 @@ nav a:hover{
 }
 </style>
 </head>
+
 <body>
+
 <main>
-    <h1>ZAIDEN</h1>
-    <nav>
-        <a href="https://bsky.app/profile/zaiden.net" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-bluesky"></i></a>
-        <a href="https://x.com/z8nfilms" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
-        <a href="https://youtube.com/@z8nfilms" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://zaidenambry.bandcamp.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-bandcamp"></i></a>
-    </nav>
+
+<h1>Z<span id="secretA">A</span>IDEN</h1>
+
+<nav>
+<a href="https://bsky.app/profile/zaiden.net" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-bluesky"></i></a>
+<a href="https://x.com/z8nfilms" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+<a href="https://youtube.com/@z8nfilms" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+<a href="https://zaidenambry.bandcamp.com/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-bandcamp"></i></a>
+</nav>
+
+<img id="secretImage" src="secret.png" alt="Secret">
+
 </main>
+
+<script>
+const a=document.getElementById("secretA");
+const img=document.getElementById("secretImage");
+const sound=new Audio("click.mp3");
+
+let count=0;
+
+a.addEventListener("click",()=>{
+    count++;
+    sound.currentTime=0;
+    sound.play();
+
+    if(count>=20){
+        img.classList.add("show");
+    }
+});
+</script>
+
 </body>
 </html>
